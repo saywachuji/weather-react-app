@@ -72,7 +72,7 @@ export default function Weather(){
         
             <footer>
             <div className="end">
-              <small className="end-text"><a href="https://github.com/saywachuji/Weather-App" rel="noreferrer" target="_blank">Open source code</a> by Saywa Chuji</small>
+              <small className="end-text"><a href="https://github.com/saywachuji/weather-react-app" rel="noreferrer" target="_blank">Open source code</a> by Saywa Chuji</small>
             </div>
            </footer>
       
