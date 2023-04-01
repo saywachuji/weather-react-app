@@ -12,5 +12,6 @@ let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "S
  setInterval(seconds, 1000)
 
 
+
 return `${day}, ${year} ${hours}:${minutes}:${seconds} ${ampm}`
 }

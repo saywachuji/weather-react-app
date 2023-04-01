@@ -2,6 +2,7 @@ import "./Weather.css"
 import React,{ useState } from 'react';
 import axios from 'axios';
 import FormattedDate from "./FormattedDate";
+import LastDate from "./LastDate";
 
 export default function Weather(){
 
@@ -38,11 +39,11 @@ if (loaded){
         
               <div className="today-date-container">
                 <p className="today-date"><FormattedDate date={weatherData.date} /></p>
-                <p>Last updated: 12 Oct, 2023</p>
+                <p>Last Updated: <LastDate date={weatherData.date} /></p>
                 
               </div>
         
-              <div className="main-city">
+              <div className="main-city mt-4">
                 <h1>{weatherData.city}</h1>
               </div>
                 <div className="row">
