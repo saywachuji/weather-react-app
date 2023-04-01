@@ -1,17 +1,37 @@
+import React, { useState, useEffect } from "react";
 
+export default function FormattedDate(){
 
-export default function FormattedDate(props){
+const date = new Date()
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
- let day = days[props.date.getDay()];
- let hours = props.date.getHours() < 10 ? `0${props.date.getHours()}` : props.date.getHours();
- let minutes = props.date.getMinutes() < 10 ? `0${props.date.getMinutes()}` : props.date.getMinutes();
+ let day = days[date.getDay()];
+ let hours = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
+ let minutes = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
+ let year = date.getFullYear();
  let ampm = hours >= 12 ? 'PM' : 'AM';
- let year = props.date.getFullYear();
- let seconds = props.date.getSeconds();
- setInterval(minutes, 60000)
- setInterval(seconds, 1000)
 
+ function RealTimeSeconds() {
+    const [seconds, setSeconds] = useState(new Date().getSeconds());
+  
+    useEffect(() => {
+      function updateSeconds() {
+        const seconds = new Date().getSeconds();
+        setSeconds(seconds);
+      };
+      const intervalId = setInterval(updateSeconds, 1000);
+      return () => clearInterval(intervalId);
+    }, []);
 
+    if (seconds < 10){
+        return `0${seconds}`
+    }
+  
+    return (
 
-return `${day}, ${year} ${hours}:${minutes}:${seconds} ${ampm}`
+        `${seconds}`
+  
+    );
+  }
+
+return `${day}, ${year} ${hours}:${minutes}:${RealTimeSeconds()} ${ampm}`
 }

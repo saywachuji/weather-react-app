@@ -38,7 +38,7 @@ if (loaded){
               </div>
         
               <div className="today-date-container">
-                <p className="today-date"><FormattedDate date={weatherData.date} /></p>
+                <p className="today-date"><FormattedDate /></p>
                 <p>Last Updated: <LastDate date={weatherData.date} /></p>
                 
               </div>
