@@ -1,25 +1,29 @@
 import "./Weather.css"
-import React,{ useState } from 'react'
-import axios from 'axios'
+import React,{ useState } from 'react';
+import axios from 'axios';
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(){
 
 const [loaded, setLoaded] = useState(false);
 const [weatherData, setWeatherData] = useState({});
 
+
 const handleSearch = (response) => {
 setWeatherData({
     city: response.data.city,
     temp: response.data.temperature.current,
     humidity: response.data.temperature.humidity,
-    wind: response.data.wind,
+    wind: response.data.wind.speed,
     icon: response.data.condition.icon_url,
     description: response.data.condition.description,
+    date: new Date(response.data.time * 1000),
 
 });
-setLoaded(true);
 
+setLoaded(true);
 };
+
 
 if (loaded){
     return(
@@ -33,7 +37,7 @@ if (loaded){
               </div>
         
               <div className="today-date-container">
-                <p className="today-date">12 Oct, 2023</p>
+                <p className="today-date"><FormattedDate date={weatherData.date} /></p>
                 <p>Last updated: 12 Oct, 2023</p>
                 
               </div>
@@ -49,7 +53,7 @@ if (loaded){
                     </ul>
                   </div>
                   <div className="col-4">
-                    <strong><span className="main-temp">{weatherData.temp}°C</span></strong>
+                    <strong><span className="main-temp">{Math.round(weatherData.temp)}°C</span></strong>
                     <br />
                     <img className="main-image" alt={weatherData.description} src={weatherData.icon}/>
                     <br />
@@ -93,11 +97,12 @@ if (loaded){
 } else {
     let key = "c635taf5ao3b501623e4fa7bf7fc0f02";
     let units = "metric";
-    let city = "Napa"
+    let city = "New York"
     const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${key}&units=${units}`
-    
     axios.get(apiUrl).then(handleSearch)
-    return "Loading..."
+
+    return 'Loading'
+   
 }
    
       
