@@ -113,15 +113,7 @@ backdrop-filter: blur(10px);
     color: white
   }
   
-  .celsius:hover {
-    color: #03045e;
-  }
-  
-  .farenheit:hover {
-    color: #03045e;
-  }
-  
-  
+
   
   button {
     display: block;
