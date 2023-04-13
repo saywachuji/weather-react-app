@@ -1,3 +1,12 @@
+.Weather {
+  border-radius: 35px;
+  max-width: 800px;
+  margin: 50px auto 0px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(10px);
+  background-size: cover;
+}
 .Weather .main-city {
     text-align: center;
     margin: 0 auto;
@@ -112,13 +121,6 @@
     color: #03045e;
   }
   
-  .celsius:active{
-  color: white;
-  }
-  
-  .farenheit:active{
-    color: white;
-  }
   
   
   button {
@@ -190,4 +192,9 @@
    .weather-description{
     text-transform: capitalize;
     
+   }
+
+   .loader{
+    margin: 0 auto;
+    text-align: center;
    }
