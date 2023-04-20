@@ -4,6 +4,7 @@ import axios from 'axios';
 import FormattedDate from "./FormattedDate";
 import LastDate from "./LastDate";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast"
 import { Grid } from 'react-loader-spinner';
 
 export default function Weather(props){
@@ -13,7 +14,9 @@ const [city, setCity] = useState(props.defaultCity);
 
 
 const handleSearch = (response) => {
+
 setWeatherData({
+    coords: response.data.coordinates,
     city: response.data.city,
     temp: response.data.temperature.current,
     humidity: response.data.temperature.humidity,
@@ -21,9 +24,8 @@ setWeatherData({
     icon: response.data.condition.icon_url,
     description: response.data.condition.description,
     date: new Date(response.data.time * 1000),
-
+    
 });
-
 setLoaded(true);
 };
 
@@ -60,6 +62,7 @@ if (loaded){
                 
               </div>
               <WeatherInfo data={weatherData}/>
+              <WeatherForecast coordinates={weatherData.coords}/>
         
             </div>
         );
