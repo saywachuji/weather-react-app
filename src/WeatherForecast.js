@@ -29,7 +29,7 @@ if (loaded){
                   return ( 
                   <div className="col" key={index}>
                     <WeatherForecastDay data={dailyForecast} />
-                  </div>)}}
+                  </div>)} else { return null}} 
                   )
                   }
             </div>
@@ -38,5 +38,5 @@ if (loaded){
 } else {
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${props.coordinates.latitude}&lon=${props.coordinates.longitude}&key=c635taf5ao3b501623e4fa7bf7fc0f02&units=metric`
   axios.get(apiUrl).then(handleSearch)
-  console.log(apiUrl)
+  
 }}
